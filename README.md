@@ -1,4 +1,8 @@
-# ha-spoton
+# Home Assistant SpotOn Integration
+
+<p align="center">
+  <img src="https://spotonfence.com/cdn/shop/files/spoton-logo-3.png?v=1756224096&width=600" alt="SpotOn logo" width="240">
+</p>
 
 Home Assistant custom integration for SpotOn dog collars.
 
