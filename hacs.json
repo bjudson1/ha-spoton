@@ -1,0 +1,9 @@
+{
+  "name": "SpotOn",
+  "content_in_root": false,
+  "domains": [
+    "spoton"
+  ],
+  "homeassistant": "2024.8.0",
+  "render_readme": false
+}

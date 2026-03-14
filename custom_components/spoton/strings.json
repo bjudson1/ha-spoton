@@ -1,0 +1,21 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to SpotOn",
+        "data": {
+          "email": "Email",
+          "password": "Password",
+          "base_url": "Base URL"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication"
+    },
+    "abort": {
+      "single_instance_allowed": "Only a single SpotOn account is supported"
+    }
+  }
+}
