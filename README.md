@@ -14,7 +14,7 @@ Home Assistant custom integration for SpotOn dog collars.
 
 ### Manual
 
-1. Copy this repo's `custom_components/spoton` folder into your Home Assistant config directory so the final installed path is `custom_components/spoton`.
+1. Copy `custom_components/spoton` into your Home Assistant config directory under `custom_components/spoton`.
 2. Restart Home Assistant.
 3. Go to `Settings -> Devices & Services -> Add Integration`.
 4. Search for `SpotOn`.
@@ -37,5 +37,5 @@ High-level flow:
 ## Notes
 
 - The integration currently polls SpotOn summary state every 5 minutes.
-- The manual refresh button mimics the SpotOn Mobile Application's behavior.
+- There is a refresh button per collar to refresh location immediately.
 - Fence rendering in Home Assistant is optional and separate from the core integration.
