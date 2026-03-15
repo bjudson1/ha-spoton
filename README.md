@@ -9,6 +9,7 @@ Home Assistant custom integration for SpotOn dog collars.
 ## Current scope
 
 - Collar location as `device_tracker` entities
+- Per-collar battery percentage sensors
 - Last-seen timestamp exposure
 - Fence retrieval and map-ready fence modeling
 - Per-collar `Refresh Location` buttons using the same WebSocket refresh path as the mobile app

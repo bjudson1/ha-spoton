@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from homeassistant.components.sensor import SensorDeviceClass, SensorEntity
+from homeassistant.components.sensor import SensorDeviceClass, SensorEntity, SensorStateClass
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.device_registry import DeviceInfo
@@ -33,6 +33,7 @@ async def async_setup_entry(
             if collar_uid in known_collar_uids:
                 continue
             known_collar_uids.add(collar_uid)
+            new_entities.append(SpotOnBatterySensor(coordinator, collar_uid))
             new_entities.append(SpotOnLastLocationTimestampSensor(coordinator, collar_uid))
 
         for fence_id, fence in coordinator.data.fences.items():
@@ -88,6 +89,72 @@ class SpotOnLastLocationTimestampSensor(CoordinatorEntity[SpotOnDataUpdateCoordi
             "last_seen_at": collar.get("last_seen_at"),
             "last_status_message_at": collar.get("last_status_message_at"),
             "timestamp_source": "last_seen_at_or_last_status_message_at",
+        }
+
+    @property
+    def device_info(self) -> DeviceInfo | None:
+        """Return the parent collar device."""
+        collar = self._collar
+        if collar is None:
+            return None
+
+        return DeviceInfo(
+            identifiers={(DOMAIN, self._collar_uid)},
+        )
+
+    @property
+    def _collar(self) -> dict[str, Any] | None:
+        for collar in self.coordinator.data.collars:
+            if str(collar.get("uid") or collar.get("id")) == self._collar_uid:
+                return collar
+        return None
+
+
+class SpotOnBatterySensor(CoordinatorEntity[SpotOnDataUpdateCoordinator], SensorEntity):
+    """Battery percentage sensor for a collar."""
+
+    _attr_device_class = SensorDeviceClass.BATTERY
+    _attr_native_unit_of_measurement = "%"
+    _attr_state_class = SensorStateClass.MEASUREMENT
+    _attr_has_entity_name = True
+    _attr_name = "Battery"
+
+    def __init__(self, coordinator: SpotOnDataUpdateCoordinator, collar_uid: str) -> None:
+        super().__init__(coordinator)
+        self._collar_uid = collar_uid
+        self._attr_unique_id = f"{collar_uid}_battery"
+
+    @property
+    def available(self) -> bool:
+        """Return entity availability."""
+        return self.coordinator.last_update_success and self._collar is not None
+
+    @property
+    def native_value(self) -> int | None:
+        """Return the collar battery percentage."""
+        collar = self._collar
+        if collar is None:
+            return None
+
+        value = collar.get("battery_level")
+        if value in (None, ""):
+            return None
+        try:
+            return int(value)
+        except (TypeError, ValueError):
+            return None
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        """Return supporting collar context."""
+        collar = self._collar
+        if collar is None:
+            return {}
+
+        return {
+            "power_status": collar.get("power_status"),
+            "tracking": collar.get("tracking"),
+            "last_seen_at": collar.get("last_seen_at"),
         }
 
     @property
