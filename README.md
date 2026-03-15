@@ -6,6 +6,10 @@
 
 Home Assistant custom integration for SpotOn dog collars.
 
+<p align="center">
+  <img src="docs/images/ha-spoton-example.png" alt="SpotOn integration shown in Home Assistant with map, fences, last seen timestamps, refresh buttons, and battery sensors" width="420">
+</p>
+
 ## Current scope
 
 - Collar location as `device_tracker` entities
