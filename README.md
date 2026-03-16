@@ -31,7 +31,15 @@ Home Assistant custom integration for SpotOn dog collars.
 
 ### HACS
 
-This repo includes `hacs.json` and is structured for HACS, but manual installation is the simplest first setup path.
+This repo includes `hacs.json` and is structured for HACS.
+
+Current expected HACS flow:
+
+1. In HACS, add this repo as a custom repository.
+2. Select the repository type `Integration`.
+3. Install `SpotOn` from HACS and restart Home Assistant.
+
+Manual installation is still the simplest fallback path while HACS publication is being finalized.
 
 ## Optional map fence overlay
 

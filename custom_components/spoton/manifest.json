@@ -1,9 +1,10 @@
 {
   "domain": "spoton",
   "name": "SpotOn",
-  "codeowners": [],
+  "codeowners": ["@bjudson1"],
   "config_flow": true,
-  "documentation": "https://www.spotonfence.com/",
+  "documentation": "https://github.com/bjudson1/ha-spoton",
+  "issue_tracker": "https://github.com/bjudson1/ha-spoton/issues",
   "integration_type": "service",
   "iot_class": "cloud_polling",
   "requirements": [],
