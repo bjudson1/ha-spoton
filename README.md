@@ -21,6 +21,16 @@ Home Assistant custom integration for SpotOn GPS dog collars.
 
 ## Installation
 
+### HACS
+
+This repo includes `hacs.json` and can be installed through HACS as a custom repository.
+
+1. Open `HACS`.
+2. Open the `...` menu and choose `Custom repositories`.
+3. Add `https://github.com/bjudson1/ha-spoton` as an `Integration` repository.
+4. Search for `SpotOn` in HACS and install it.
+5. Restart Home Assistant.
+
 ### Manual
 
 1. Copy `custom_components/spoton` into your Home Assistant config directory under `custom_components/spoton`.
@@ -29,17 +39,7 @@ Home Assistant custom integration for SpotOn GPS dog collars.
 4. Search for `SpotOn`.
 5. Enter your SpotOn account credentials.
 
-### HACS
-
-This repo includes `hacs.json` and is structured for HACS.
-
-Current expected HACS flow:
-
-1. In HACS, add this repo as a custom repository.
-2. Select the repository type `Integration`.
-3. Install `SpotOn` from HACS and restart Home Assistant.
-
-Manual installation is still the simplest fallback path while HACS publication is being finalized.
+Manual installation is still available as a fallback if needed.
 
 ## Optional map fence overlay
 
