@@ -4,7 +4,7 @@
   <img src="https://spotonfence.com/cdn/shop/files/spoton-logo-3.png?v=1756224096&width=600" alt="SpotOn logo" width="240">
 </p>
 
-Home Assistant custom integration for SpotOn dog collars.
+Home Assistant custom integration for SpotOn GPS dog collars.
 
 <p align="center">
   <img src="docs/images/ha-spoton-example.png" alt="SpotOn integration shown in Home Assistant with map, fences, last seen timestamps, refresh buttons, and battery sensors" width="420">
